@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://0.0.0.0:27017/farmersstore', {useNewUrlParser: true});
+mongoose.connect('mongodb+srv://20311A0504:meghana1234@1234@cluster0.qhzkco7.mongodb.net/', {useNewUrlParser: true});
 var conn = mongoose.connection;
 conn.on('connected', function() {
     console.log('database is connected successfully');
