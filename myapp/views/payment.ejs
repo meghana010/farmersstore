@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<head>
+	<title>Farmers' Store</title>
+  <link href="../payment.css" rel="stylesheet">
+	<link rel="stylesheet" href="../shop.css">
+	<link rel="stylesheet" href="../indexFooter.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+ 
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<a><b>FARMERS' STORE</b></a>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="homeuser.ejs" >Home</a></li>
+				<li><a href="shopuser.ejs" class="active">Shop</a></li>
+				<li><a href="loginuser.ejs" ><i class="fa fa-user icon"></i> <%=session.formData.firstname%></a></li>
+				<li><a href="aboutuser.ejs">About Us</a></li>
+				<li><a href="contactuser.ejs">Contact</a></li>
+			</ul>
+		</nav>
+    </header>
+    <form method="POST">
+
+      <div class="Buy">
+    
+        <h1><i>Payment Methods</i></h1>
+    
+      </div>
+    
+     <form action="#">
+    
+      <center>
+    
+      <p><b>Please select any of the payment method:</b></p>
+    
+      <i class="fa fa-user icon"></i><h4>Account*</h4>
+    
+          <div class="input-group">
+    
+            <div class="input-box">
+    
+             <input type="text" placeholder="Full Name*" required class="name">
+    
+            </div>
+    
+         <!--   <div class="input-box">
+    
+              <input type="text" placeholder="Nick Name*" required class="name">
+    
+              <--<i class="fa fa-user icon"></i>-
+    
+            </div>  -->
+    
+          </div>
+    
+          <div class="input-group">
+    
+            <div class="input-box">
+    
+              <input type="email" placeholder="Email Adress*" required class="name">
+    
+            </div>
+    
+          </div>
+    
+          <!-- <div class="input-group">
+    
+           <div class="input-box">
+    
+              <h4> Date of Birth*</h4>
+    
+              <input type="text" placeholder="DD" class="dob">
+    
+              <input type="text" placeholder="MM" class="dob">
+    
+              <input type="text" placeholder="YYYY" class="dob">
+    
+            </div>
+    
+            <div class="input-box">
+    
+              <h4> Gender*</h4>
+    
+              <input type="radio" id="b1" name="gendar" checked class="radio">
+    
+              <label for="b1">Male</label>
+    
+              <input type="radio" id="b2" name="gendar" class="radio">
+    
+              <label for="b2">Female</label>
+    
+            </div>  
+    
+          </div> -->
+    
+          <div class="input-group">
+    
+            <div class="input-box">
+    
+              <h3>Payment Details</h3>
+    
+              <input type="radio" name="pay" id="bc1" checked class="radio">
+    
+              <label for="bc1"><span><i class="fa fa-cc-visa"></i> Credit Card</span></label>
+    
+            </div>
+    
+            <div class="input-group">
+    
+             <div class="input-box">
+    
+               <input type="tel" placeholder="Card Number" required class="name">
+    
+               <i class="fa fa-credit-card icon"></i>
+    
+             </div>
+    
+           </div>
+    
+          <div class="input-group">
+    
+           <div class="input-box">
+    
+             <input type="tel" placeholder="Card CVC" required class="name">
+    
+             <i class="fa fa-user icon"></i>
+    
+           </div>
+    
+           <div class="input-box">
+    
+             <select>
+    
+               <option>01 jun</option>
+    
+               <option>02 jun</option>
+    
+               <option>03 jun</option>
+    
+             </select>
+    
+             <select>
+    
+               <option>2024</option>
+    
+               <option>2026</option>
+    
+               <option>2027</option>
+    
+             </select>
+    
+           </div>
+    
+         </div>
+    
+       </form>
+    
+      <input type="radio" id="html" name="fav_language" value="HTML" required checked class="radio">
+    
+        <label>Pay by QR code</label>
+    
+        <p> &nbsp &nbsp JUST SCAN AND PAY </p>
+    
+        &nbsp &nbsp &nbsp<img src="Qrcode.jpeg" width="100" height="100" alt ="pay by upi">
+    
+        <h6> &nbsp &nbsp you can pay by any upi methods </h6>
+    
+     <input type="radio" id="html" name="fav_language" value="HTML" required checked class="radio">
+    
+        <label> Cash On Delivery</label></br></br>
+    
+        <div class="bt">
+    
+        <a href="../ordered.html" class="btn"> Pay</a>
+    
+       </div>
+    
+       </center>
+    
+     </form>
+    
+    <footer>
+    
+     <section class="promo">
+    
+      <h2>Thanks for choosing our Website</h2>
+    
+      <p>We provide agricultural commodity from farmer to customer directly. These are grown using natural fertilizers.</p>
+    
+     </section>
+    
+    </footer>
+    
+    <footer class="footer-distributed" style="background-color:black" id="aboutUs">
+    
+     <center>
+    
+      <h1 style="font: 35px calibri;">About Us</h1>
+    
+     </center>
+    
+     <div class="footer-left">
+    
+      <h3 style="font-family: 'Times New Roman', cursive;">farmersstore.com &copy; </h3>
+    
+     <!-- <div class="logo">
+    
+      <a href="index.php"><img src="images/logo.png" width="200px"></a>
+    
+      </div>-->
+    
+      <br />
+    
+      <p style="font-size:20px;color:white">Your product Our Welfare!!!</p>
+    
+      <br />
+    
+     </div>
+    
+     <div class="footer-center">
+    
+      <div>
+    
+      <i class="fa fa-map-marker"></i>
+    
+      <p style="font-size:20px">farmersstore.com<span>SNIST Team-1</span></p>
+    
+      </div>
+    
+      <div>
+    
+      <i class="fa fa-phone"></i>
+    
+      <p style="font-size:20px">987654321</p>
+    
+      </div>
+    
+      <div>
+    
+      <i class="fa fa-envelope"></i>
+    
+      <p style="font-size:20px"><a href="https://mail.google.com/mail/#compose" style="color:white">farmersstore@gmail.com</a></p>
+    
+      </div>
+    
+     </div>
+    
+     <div class="footer-right">
+    
+      <p class="footer-company-about" style="color:white">
+    
+      <span style="font-size:20px"><b>About farmers'store</b></span>
+    
+      farmers' store is e-commerce trading platform for grains & groceries...
+    
+      </p>
+    
+      <div class="footer-icons">
+    
+      <a href="https://www.facebook.com/"><i style="margin-left: 0;margin-top:5px"class="fab fa-facebook"></i></a>
+    
+      <a href="https://www.instagram.com"><i style="margin-left: 0;margin-top:5px" class="fab fa-instagram"></i></a>
+    
+      <a href="https://www.youtube.com/"><i style="margin-left: 0;margin-top:5px" class="fab fa-youtube"></i></a>
+    
+      </div>
+    
+     </div>
+    
+     </footer>
+    
+    </body>
+    
+    </html>

@@ -1,0 +1,27 @@
+<!--	<script>
+				// Assuming you have the value of data.quantity as a number
+				const dquantity = '<%= data.quantity %>';
+			  console.log(dquantity);
+				// Select the button element by ID
+				const bn = document.getElementById('dis<%=data._id%>');
+				const quantityInput = document.getElementById(`quantityInput_${productId}`).value;
+				if (typeof quantityInput !== 'undefined' && !isNaN(quantityInput))
+				{
+
+					quantityInput=parseInt(quantityInput);
+				}
+				else
+				quantityInput=0;
+				// Set the disabled attribute based on the value of quantity
+				if ((typeof dquantity !== 'undefined' && !isNaN(dquantity) && (parseInt(dquantity)==0 || parseInt(dquantity)<0))|| quantityInput>dquantity) {
+				  bn.disabled = true;
+				  bn.style.color='red';
+				  document.getElementById("outofstk<%=data._id%> ").innerText="Out Of Stock";
+
+				} else {
+				  bn.disabled = false;
+				  document.getElementById("outofstk<%=data._id%>").innerText="";
+				}
+			  </script>
+				 
+			-->	

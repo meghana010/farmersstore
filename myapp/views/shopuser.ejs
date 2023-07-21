@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<head>
+	<title>Farmers' Store</title>
+	<link rel="stylesheet" href="../shop.css">
+	<link rel="stylesheet" href="../indexFooter.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+	<script>
+
+function updateButtonAndOutOfStock(productId,dquantity) {
+	var quantityInput = document.getElementById(`quantityInput_${productId}`).value;
+			//const bn = document.getElementById(`dis_${productId}`);
+    const outOfStock = document.getElementById(`outofstk${productId}`);
+	if (typeof quantityInput !== 'undefined' && quantityInput.length>0)
+				{
+
+					quantityInput=parseInt(quantityInput);
+				}
+				else
+				quantityInput=0;
+				// Set the disabled attribute based on the value of quantity
+				if( (typeof dquantity !== 'undefined' && (parseInt(dquantity)==0 || parseInt(dquantity)<0))|| quantityInput>parseInt(dquantity)|| quantityInput==="") {
+				  //bn.disabled = true;
+				 // bn.style.color='red';
+				  outOfStock.innerText="Out Of Stock";
+
+				} else {
+				 // bn.disabled = false;
+				  outOfStock.innerText="";
+				}
+}
+
+
+
+
+		function purchaseProduct(productId, product,price, file,dquantity) {
+			var quantityInput = document.getElementById(`quantityInput_${productId}`).value;
+			
+			if(dquantity>0 && quantityInput<=parseInt(dquantity) && quantityInput!=="")
+			{	
+    
+		  const requestData = {
+			productId: productId,
+    product: product,
+    price: price,
+    file: file,
+    quantity: quantityInput
+		  };
+	  
+		  fetch('/shopuser.ejs', {
+			method: 'POST',
+			headers: {
+			  'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(requestData)
+		  })
+			.then(response => {
+			  if (response.ok) {
+				window.location.href = '/shopuser.ejs';
+			  } else {
+				throw new Error('Request failed with status: ' + response.status);
+			  }
+			})
+			.then(data => {
+			  console.log(data.message);
+			})
+			.catch(error => {
+			  console.error('An error occurred:', error);
+			});
+			window.location.href = "/payment.ejs";
+		}
+		else {
+		
+		alert("Quantity is invalid. Cannot proceed with the purchase.");
+      // Show an error message or disable the button
+      console.log("Quantity is invalid. Cannot proceed with the purchase.");
+      event.preventDefault(); // Prevent the anchor tag from triggering navigation
+    }
+
+	}
+	
+	  </script>
+	  
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<a><b>FARMERS' STORE</b></a>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="homeuser.ejs" >Home</a></li>
+				<li><a href="shopuser.ejs" class="active">Shop</a></li>
+				<li><a href="loginuser.ejs"><i class="fa fa-user icon"></i> <%=session.formData.firstname%></a></li>
+				<li><a href="aboutuser.ejs">About Us</a></li>
+				<li><a href="contactuser.ejs">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section class="featured">
+			<% if (cData.length !== 0) { %>
+			  <% cData.forEach(function(data) { %>
+
+				<div class="product">
+				  <img src="data:<%= data.file.contentType %>;base64,<%= data.file.data.toString('base64') %>" alt="WHYY" />
+				  <h3><%= data.product %></h3>
+				  <p>Rs.<%= data.price %> per KG</p>
+				  <input type="number" id="quantityInput_<%= data._id  %>" placeholder="Quantity" />
+				  <br><br>
+				
+	
+
+			<button onclick="purchaseProduct('<%= data._id %>','<%= data.product %>', '<%= data.price %>', '<%= data.file.data.toString(`base64`) %>','<%=data.quantity%>')" class="btn" id="dis_<%=data._id%>"><a href="payment.ejs" style="text-decoration:none; color:aliceblue" onclick="handleClick(event, '<%= data.quantity %>')">Buy Now</a></button>
+			<br><br> 
+			<p><b>Quantity remaining :</b> <%= data.quantity %> Kg</p>
+			<br>	<b ><p id="outofstk<%=data._id%>"></p></b>
+			  
+			<script>
+				document.addEventListener('DOMContentLoaded', function() {
+			   updateButtonAndOutOfStock('<%= data._id %>','<%= data.quantity %>');
+			 });
+			 </script> 
+				</div>
+			  <% }); %>
+			<% } else { %>
+			  <div class="product">
+				<p>No data found</p>
+			  </div> 
+			<% } %>
+		  </section>
+		  
+		
+	</main>
+	<footer>
+		<section class="promo">
+			<h2>Thanks for choosing our Website</h2>
+			<p>We provide agricultural commodity from farmer to customer directly. These are grown using natural fertilizers.</p>
+		</section>
+	</footer>
+	<footer class="footer-distributed" style="background-color:black" id="aboutUs">
+		<center>
+		  <h1 style="font: 35px calibri;">About Us</h1>
+		</center>
+		<div class="footer-left">
+		  <h3 style="font-family: 'Times New Roman', cursive;">farmersstore.com &copy; </h3>
+		<!--  <div class="logo">
+			<a href="index.php"><img src="images/logo.png" width="200px"></a>
+		  </div>-->
+		  <br />
+		  <p style="font-size:20px;color:white">Your product Our Welfare!!!</p>
+		  <br />
+		</div>
+	
+		<div class="footer-center">
+		  <div>
+			<i class="fa fa-map-marker"></i>
+			<p style="font-size:20px">farmersstore.com<span>SNIST Team-1</span></p>
+		  </div>
+		  <div>
+			<i class="fa fa-phone"></i>
+			<p style="font-size:20px">987654321</p>
+		  </div>
+		  <div>
+			<i class="fa fa-envelope"></i>
+			<p style="font-size:20px"><a href="https://mail.google.com/mail/#compose" style="color:white">farmersstore@gmail.com</a></p>
+		  </div>
+		</div>
+	
+		<div class="footer-right">
+		  <p class="footer-company-about" style="color:white">
+			<span style="font-size:20px"><b>About farmers'store</b></span>
+			farmers' store is e-commerce trading platform for grains & groceries...
+		  </p>
+		  <div class="footer-icons">
+			<a  href="https://www.facebook.com/"><i style="margin-left: 0;margin-top:5px"class="fab fa-facebook"></i></a>
+			<a href="https://www.instagram.com"><i style="margin-left: 0;margin-top:5px" class="fab fa-instagram"></i></a>
+			<a href="https://www.youtube.com/"><i style="margin-left: 0;margin-top:5px" class="fab fa-youtube"></i></a>
+		  </div>
+		</div>
+	
+	  </footer>
+	
+</body>
+</html>

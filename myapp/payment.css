@@ -1,0 +1,162 @@
+
+* {
+
+	box-sizing: border-box;
+   
+	margin: 0;
+   
+	padding: 0;
+   
+   }
+   
+   body {
+   
+	font-family: Arial, sans-serif;
+   
+	line-height: 1.5;
+   
+	border: #080b09;
+   
+	font-weight: 200;
+   
+	background-color: #fff;
+   
+   }
+   
+   header {
+   
+	background-color: #333;
+   
+	color: #fff;
+   
+	display: flex;
+   
+	justify-content: space-between;
+   
+	align-items: center;
+   
+	padding: 20px;
+   
+	position: sticky;
+   
+	top: 0;
+   
+   }
+   
+   .name{
+   
+	padding: 14px 10px 14px 50px;
+   
+	width: 100%;
+   
+	background-color: #99aea2;
+   
+	border: 1px solid #00000033;
+   
+	outline: none;
+   
+	letter-spacing: 1px;
+   
+	transition: 0.3s;
+   
+	border-radius: 3px;
+   
+	color: #333;
+   
+	}
+   
+	.name:focus, .dob:focus{
+   
+	-webkit-box-shadow:0 0 2px 1px #7ed32180;
+   
+	-moz-box-shadow:0 0 2px 1px #7ed32180;
+   
+	box-shadow: 0 0 2px 1px #7ed32180;
+   
+	border: 1px solid #7ed321;
+   
+	background-color:#99aea2 ;
+   
+	}
+   
+	.name:focus {
+   
+	background-color: #6f726c;
+   
+	color: #fff;
+   
+	border-right: 1px solid #7ed321;
+   
+	border: none;
+   
+	transition: 1s;
+   
+	}
+   
+	.dob{
+   
+	width: 30%;
+   
+	padding: 14px;
+   
+	text-align: center;
+   
+	background-color: #fcfcfc;
+   
+	transition: 0.3s;
+   
+	outline: none;
+   
+	border: 1px solid #c0bfbf;
+   
+	border-radius: 3px;
+   
+	}
+   
+   .Buy h1{
+   
+	 color: #021003;
+   
+	font-size: 30px;
+   
+	text-decoration: none;
+   
+	 font-style: italic;
+   
+   }
+   
+	 .btn a{
+   
+	   background: color #080b09; ;
+   
+	   border: none;
+   
+	   color: #0b100c;
+   
+	   cursor: pointer;
+   
+	   display: inline-block;
+   
+	   font-size: 15px;
+   
+	   padding: 10px 15px;
+   
+	   text-decoration: none;
+   
+	   transition: background-color 0.2s ease-in-out;
+   
+	 }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   

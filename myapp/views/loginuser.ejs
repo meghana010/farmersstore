@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Farmers' Store</title>
+	<link rel="stylesheet" href="../views/login.css">
+	<link rel="stylesheet" href="../indexFooter.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+	<style>
+		#submit-btn{
+	  
+		  width: 100px;
+		  height:40px;
+			  border-radius: 5px;
+		  background-color: #4CAF50;
+	  
+		  color: white;
+	  
+		  font-family:Arial, Helvetica, sans-serif;
+			border:none;
+		  font-weight : 700;
+	  
+		}
+		.featured {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.product {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	flex-basis: calc(33.33% - 10px);
+	margin-bottom: 20px;
+	padding: 5px;
+	text-align: center;
+}
+
+.product img {
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+}
+
+.product h3 {
+	font-size: 25px;
+	margin-bottom: 10px;
+	font-weight: 700;
+}
+
+.product p {
+	font-size: 15px;
+	margin-bottom: 10px;
+	font-weight: 700;
+}
+
+	 </style>
+
+	<script type="text/javascript">
+        function preventBack() {
+            window.history.forward();
+        }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<a><b>FARMERS' STORE</b></a>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="homeuser.ejs" >Home</a></li>
+				<li><a href="shopuser.ejs" >Shop</a></li>
+				<li><a href="loginuser.ejs" class="active"><i class="fa fa-user icon"></i> <%=session.formData.firstname%></a></li>
+				<li><a href="aboutuser.ejs">About Us</a></li>
+				<li><a href="contactuser.ejs">Contact</a></li>
+			</ul>
+		</nav>
+	<!----<div class="search">
+			<input type="text" placeholder="Search...">
+			<button>Search</button>
+		</div> -->
+	</header>
+	<main>
+		<% if (session.formData.loginas == 'farmer') { %>
+	<div class="container" style="float: right;"><img src="https://media.giphy.com/media/PMVHcKskWAquBV1OVv/giphy.gif" id="img" style="width: 100px; height: 100px;"><h3>Logout here :
+			<button onclick="preventBack()"  ><a style="text-decoration: none" href="welcome.html">logout</a></button>
+		</h3>	<br></div>	
+		<div class="container">  <h2>Upload product?</h2>
+    <form method="post" action="loginuser.ejs"  enctype="multipart/form-data">
+      <label for="product"><b>Product Name</b></label>
+      <input type="text" placeholder="Enter product name" name="product" required>
+
+      <label for="price"><b>Price</b></label>
+      <input type="text" placeholder="Enter price" name="price" required>
+	  <label for="quantity"><b>Quantity(in kg)</b></label>
+      <input type="text" placeholder="Enter quantity" name="quantity" required>
+	  <label for="file"><b>Choose File</b></label><br>
+	  <input type="file" accept="image/png, image/jpg, image/jpeg" name="file" required>
+<br><br>
+	  <input type="submit" name="submit" value="submit" id="submit-btn">
+    </form>
+	
+  </div> 
+  <br><hr><br>
+  <center><h2> Uploaded products</h2></center>
+  <br> <br>
+  <section class="featured">
+	<% if (cData.length !== 0) { %>
+	  <% cData.forEach(function(data) { %>
+		<div class="product">
+		  <img src="data:<%= data.file.contentType %>;base64,<%= data.file.data.toString('base64') %>" alt="WHYY" />
+		  <h3><%= data.product %></h3>
+		  <p>Rs.<%= data.price %> per KG</p>
+		  <p>Quantity uploaded: <%= data.quantity %> kg</p>
+		</div>
+	  <% }); %>
+	<% } else { %>
+	  <div class="product">
+		<p>Haven't uploaded yet..</p>
+	  </div> 
+	<% } %>
+  </section>
+  <br><hr><br><center><h2>Your purchase history</h2></center><br><br>
+  <section class="featured">
+	<% if (productData.length !== 0) { %>
+	  <% productData.forEach(function(data) { %>
+		<div class="product">
+			<% if (data.image && data.image.data) { %>
+				<img src="data:<%= data.image.contentType %>;base64,<%= data.image.data.toString('base64') %>" alt="WHYY" />
+			  <% } else { %>
+				<p>--</p>
+			  <% } %>
+		  <h3><%= data.product %></h3>
+		  <p>Rs.<%= data.price %> per KG</p>
+		  <p>Quantity purchased: <%= data.quantity %> kg </p>
+		</div>
+	  <% }); %>
+	<% } else { %>
+	  <div class="product">
+		<p>You haven't made any purchases</p>
+	  </div> 
+	<% } %>
+  </section>
+ <%} else{%>
+	<center>
+	<div style="display: inline-block;">
+		<br><br> <img src="https://media.giphy.com/media/PMVHcKskWAquBV1OVv/giphy.gif" id="img" style="width: 100px; height: 100px;"><h2>Logout here : 
+		 <button onclick="preventBack()" class="btn" ><a style="text-decoration: none" href="welcome.html">logout</a></button>
+	</h2><br><br>
+		<hr><br>
+		</div>
+		<br></center>
+	<center><h2>Your purchase history</h2></center>
+	<br>
+	<br>
+
+	<section class="featured">
+		<% if (productData.length !== 0) { %>
+		  <% productData.forEach(function(data) { %>
+			<div class="product">
+				<% if (data.image && data.image.data) { %>
+					<img src="data:<%= data.image.contentType %>;base64,<%= data.image.data.toString('base64') %>" alt="WHYY" />
+				  <% } else { %>
+					<p>--</p>
+				  <% } %>
+			  <h3><%= data.product %></h3>
+			  <p>Rs.<%= data.price %> per KG</p>
+			  <p>Quantity purchased : <%= data.quantity %> kg</p>
+			</div>
+		  <% }); %>
+		<% } else { %>
+		  <div class="product">
+			<p>You haven't made any purchases</p>
+		  </div> 
+		<% } %>
+	  </section>
+
+
+<%} %>
+
+	</main>
+	
+<footer>
+	<section class="promo">
+		<h2>Thanks for choosing our Website</h2>
+		<p>We provide agricultural commodity from farmer to customer directly. These are grown using natural fertilizers.</p>
+	</section>
+</footer>
+<footer class="footer-distributed" style="background-color:black" id="aboutUs">
+	<center>
+	  <h1 style="font: 35px calibri;">About Us</h1>
+	</center>
+	<div class="footer-left">
+	  <h3 style="font-family: 'Times New Roman', cursive;">farmersstore.com &copy; </h3>
+	
+	  <br />
+	  <p style="font-size:20px;color:white">Your product Our Welfare!!!</p>
+	  <br />
+	</div>
+
+	<div class="footer-center">
+	  <div>
+		<i class="fa fa-map-marker"></i>
+		<p style="font-size:20px">farmersstore.com<span>SNIST Team-1</span></p>
+	  </div>
+	  <div>
+		<i class="fa fa-phone"></i>
+		<p style="font-size:20px">987654321</p>
+	  </div>
+	  <div>
+		<i class="fa fa-envelope"></i>
+		<p style="font-size:20px"><a href="https://mail.google.com/mail/#compose" style="color:white">farmersstore@gmail.com</a></p>
+	  </div>
+	</div>
+
+	<div class="footer-right">
+	  <p class="footer-company-about" style="color:white">
+		<span style="font-size:20px"><b>About farmers'store</b></span>
+		farmers' store is e-commerce trading platform for grains & groceries...
+	  </p>
+	  <div class="footer-icons">
+		<a  href="https://www.facebook.com/"><i style="margin-left: 0;margin-top:5px"class="fab fa-facebook"></i></a>
+		<a href="https://www.instagram.com"><i style="margin-left: 0;margin-top:5px" class="fab fa-instagram"></i></a>
+		<a href="https://www.youtube.com/"><i style="margin-left: 0;margin-top:5px" class="fab fa-youtube"></i></a>
+	  </div>
+	</div>
+
+  </footer>
+
+</body>
+</html>

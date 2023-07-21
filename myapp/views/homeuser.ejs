@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<head>
+	<title>Farmers' Store</title>
+	<link rel="stylesheet" href="../home.css">
+  <link rel="stylesheet" href="../indexFooter.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+ </head>
+<body>
+	<header>
+		<div class="logo">
+			<a><b>FARMERS' STORE</b></a>
+		</div>
+		<nav>
+			<ul>
+				<li><a href="homeuser.ejs" class="active">Home</a></li>
+				<li><a href="shopuser.ejs">Shop</a></li>
+				<li><a href="loginuser.ejs"><i class="fa fa-user icon"></i> <%=session.formData.firstname%></a></li>
+				<li><a href="aboutuser.ejs">About Us</a></li>
+				<li><a href="contactuser.ejs">Contact</a></li>
+			</ul>
+		</nav>
+		
+	</header>
+	<main>
+  <div class="slideshow-container">
+  <div class="banner">
+    <img src="../banner1.jpg">
+  </div>
+  
+  <div class="banner">
+    <img src="../banner3.jpeg">
+  </div>
+  
+  <div class="banner">
+    <img src="../banner4.jpeg">
+  </div>
+
+  <div class="banner">
+    <img src="../banner2.jpg">
+  </div>
+  
+  <a class="prev" onclick="moveSlide(-1)">&#10094;</a>
+  <a class="next" onclick="moveSlide(1)">&#10095;</a>
+  </div>
+  <section class="textbox">
+  <div class="text">
+  	<h1>We provide naturally grown products.</h1>
+  	<h1>which are good for health.</h1>
+  	<p>Free delivery available</p>
+    <br>
+  	<a href="shopuser.ejs">Order Now</a>
+  </div>
+  <div class="img">
+  </div>
+  </section>
+	</main>
+	<footer>
+		<section class="promo">
+			<h2>Thanks for choosing our Website</h2>
+			<p>We provide products from farmer to customer directly. These are grown using natural fertilizers.<br>This is for direct interaction between farmers and customers, inorder to avoid exploitation of both.<br>Digital marketing is a long felt need of farmers and consumers of the country as it goes a long way in ensuring <br>satisfactory level of consumers through direct sale of agriculture commodity by the farmers to the consumer at affordable prices.</p>
+		</section>
+	</footer>
+  <footer class="footer-distributed" style="background-color:black" id="aboutUs">
+		<center>
+		  <h1 style="font: 35px calibri;">About Us</h1>
+		</center>
+		<div class="footer-left">
+		  <h3 style="font-family: 'Times New Roman', cursive;">farmersstore.com &copy; </h3>
+		<!--  <div class="logo">
+			<a href="index.php"><img src="images/logo.png" width="200px"></a>
+		  </div>-->
+		  <br />
+		  <p style="font-size:20px;color:white">Your product Our Welfare!!!</p>
+		  <br />
+		</div>
+	
+		<div class="footer-center">
+		  <div>
+			<i class="fa fa-map-marker"></i>
+			<p style="font-size:20px">farmersstore.com<span>SNIST Team-1</span></p>
+		  </div>
+		  <div>
+			<i class="fa fa-phone"></i>
+			<p style="font-size:20px">987654321</p>
+		  </div>
+		  <div>
+			<i class="fa fa-envelope"></i>
+			<p style="font-size:20px"><a href="#" style="color:white">farmersstore@gmail.com</a></p>
+		  </div>
+		</div>
+	
+		<div class="footer-right">
+		  <p class="footer-company-about" style="color:white">
+			<span style="font-size:20px"><b>About farmers'store</b></span>
+			farmers' store is e-commerce trading platform for grains & groceries...
+		  </p>
+		  <div class="footer-icons">
+			<a  href="https://www.facebook.com/"><i style="margin-left: 0;margin-top:5px"class="fab fa-facebook"></i></a>
+			<a href="https://www.instagram.com"><i style="margin-left: 0;margin-top:5px" class="fab fa-instagram"></i></a>
+			<a href="https://www.youtube.com/"><i style="margin-left: 0;margin-top:5px" class="fab fa-youtube"></i></a>
+		  </div>
+		</div>
+	
+	  </footer>
+	
+<script>
+  var slideIndex = 1;
+showSlide(slideIndex);
+
+var slideInterval = setInterval(function() {
+  moveSlide(1);
+}, 2000);
+
+function moveSlide(n) {
+  showSlide(slideIndex += n);
+}
+
+function showSlide(n) {
+  var i;
+  var slides = document.getElementsByClassName("banner");
+  if (n > slides.length) {
+    slideIndex = 1;
+  }
+  if (n < 1) {
+    slideIndex = slides.length;
+  }
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[slideIndex - 1].style.display = "block";
+}
+</script>
+
+</body>
+</html>
