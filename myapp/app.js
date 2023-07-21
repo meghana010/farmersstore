@@ -222,7 +222,8 @@ app.post('/contactuser.ejs',(req,res)=>{
             const quantityToUpdate = -quantity;
             //{product:product,price:price}
 
-             allProducts.findOneAndUpdate({_id:productId,$where: `this.quantity + ${quantityToUpdate} >= 0`},update, 
+             allProducts.findOneAndUpdate({_id:productId,$expr: { $gte: [{ $add: ["$quantity", quantityToUpdate] }, 0] }
+  },update, 
               {
                   returnNewDocument: true
               } ,function( error, result){
